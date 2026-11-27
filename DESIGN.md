@@ -96,3 +96,34 @@ After: list1.cardIds = [ c2, c3] , list2.cardIds = [ c1 ]
 What changed: c1 moved from one array to the other. the index became 0 in the new array.
 
 4. Component tree:
+App
+   Board
+       List
+          ListHeader (tells the parent when the title is renamed or the list is deleted)
+                Card
+                   AddCardForm (is used when a new card is submitted)
+                        AddListForm (is used when a new list is submitted)
+
+* Component Note: 
+App:
+imports the sample data used and hands the board to the board component. It is not repeated. It has no props
+
+Board:
+Renders and lays out one list per id using board.listIds. Displays a board title and lists and its card in order. It has a list prop and its is not repeated.
+
+List:
+Renders the list.cardIds into cards in order. It is repeated once per column. It has a list props.
+
+ListHeader:
+showsa list title and number of cards in a list and can be renamed and deleted. It has a title prop and a cardCount prop.
+
+Card:
+Shows one card's title and is repeated multiple times for every card. It can be edited, deleted and dragged between different lists. It has a card prop.
+
+AddCardForm:
+It is a placeholder for the add a card area. It is an area to add new cards and is repeated once. It has no props.
+
+AddListForm:
+It is a placeholder for the add a list area. It is an area to add new lists and is repeated once. It has no props.
+
+
